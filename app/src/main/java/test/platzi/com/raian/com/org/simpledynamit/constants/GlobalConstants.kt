@@ -6,5 +6,6 @@ class GlobalConstants{
         const val INPUT_CREDENTIALS_ERROR = "Credentials cannot be Empty"
         const val ERROR_CREDENTIALS_INVALID = "Credentials are invalid"
         const val BASE_URL_OPEN_AQ = "https://api.openaq.org"
+        const val OPEN_AQ_CITIES_LIMIT = 2046
     }
 }

@@ -16,6 +16,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import test.platzi.com.raian.com.org.simpledynamit.R
 import test.platzi.com.raian.com.org.simpledynamit.constants.GlobalConstants
+import test.platzi.com.raian.com.org.simpledynamit.model.city.ResultOpenAQCity
 import test.platzi.com.raian.com.org.simpledynamit.model.country.Result
 import test.platzi.com.raian.com.org.simpledynamit.model.country.ResultOpenAQCountry
 import test.platzi.com.raian.com.org.simpledynamit.providers.RetrofitProvider
@@ -39,12 +40,13 @@ class InitialWelcomeFragment : Fragment() {
         initializeView()
         initRetrofit()
         loadCountries()
+        loadCities()
 
         // Set an on item selected listener for spinner object
         mSpinnerCities?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
                 // Display the selected item text on text view
-
+                Log.e(TAG, "onItemSelected:: $position, $id")
             }
 
             override fun onNothingSelected(parent: AdapterView<*>){
@@ -64,19 +66,35 @@ class InitialWelcomeFragment : Fragment() {
         restService = retrofit?.create(RestService::class.java)!!
     }
 
-
     private fun loadCountries(){
-        restService?.getAllCountries()?.enqueue(object : Callback<ResultOpenAQCountry>{
-            override fun onResponse(call: Call<ResultOpenAQCountry>?, response: Response<ResultOpenAQCountry>?) {
-                Log.d(TAG, "onResponse::${response?.body()?.results}")
-                initAdapterForCountries(true, response?.body()?.results)
+        Runnable {
+            restService?.getAllCountries()?.enqueue(object : Callback<ResultOpenAQCountry>{
+                override fun onResponse(call: Call<ResultOpenAQCountry>?, response: Response<ResultOpenAQCountry>?) {
+                    Log.d(TAG, "getAllCountries()::onResponse::${response?.body()?.results}")
+                    initAdapterForCountries(true, response?.body()?.results)
+                }
+                override fun onFailure(call: Call<ResultOpenAQCountry>?, t: Throwable?) {
+                    Log.e(TAG, "getAllCountries()::onFailure::${t?.message}")
+                }
+            })
+        }.run()
+    }
 
-            }
+    private fun loadCities(){
+        Runnable {
+            restService?.getAllCities()?.enqueue(object : Callback<ResultOpenAQCity>{
+                override fun onResponse(call: Call<ResultOpenAQCity>?, response: Response<ResultOpenAQCity>?) {
+                    Log.d(TAG, "getAllCities()::onResponse::${response?.body()?.results?.size}")
+                }
 
-            override fun onFailure(call: Call<ResultOpenAQCountry>?, t: Throwable?) {
-                Log.e(TAG, "onFailure")
-            }
-        })
+                override fun onFailure(call: Call<ResultOpenAQCity>?, t: Throwable?) {
+                    Log.e(TAG, "getAllCities()::onFailure::${t?.message}")
+
+                }
+
+            })
+        }.run()
+
     }
 
     private fun initAdapterForCountries(dataFetched: Boolean, lstRes: List<Result>?){

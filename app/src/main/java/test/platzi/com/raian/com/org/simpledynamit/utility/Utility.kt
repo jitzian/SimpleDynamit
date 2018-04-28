@@ -9,12 +9,12 @@ class Utility{
         when(field){
             "name".toLowerCase()->{
                 for(i in lstRes){
-                    arrayToReturn.add(i.name)
+                    i.name?.let { arrayToReturn.add(it) }
                 }
             }
             "code".toLowerCase()->{
                 for(i in lstRes){
-                    arrayToReturn.add(i.code)
+                    i.code?.let { arrayToReturn.add(it) }
                 }
             }
             "cities".toLowerCase()->{

@@ -36,7 +36,7 @@ ext.deps = [
         'androidSupportVersionLib'  :   '27.1.1',
         'retrofitVersionLib'        :   '2.3.0',
         'gsonVersionLib'            :   '2.3.0',
-//        'androidVersionSupportLib'  :   '26.1.0',
         'picassoVersionLib'         :   '2.5.2',
-        'anko_version'              :   '0.10.4'
+        'anko_version'              :   '0.10.4',
+        'glideVersionLib'           :   '4.7.1'
 ]

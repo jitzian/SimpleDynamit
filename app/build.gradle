@@ -50,6 +50,10 @@ dependencies {
     //Picasso
     compile "com.squareup.picasso:picasso:${deps.picassoVersionLib}"
 
+    //Glide
+    implementation "com.github.bumptech.glide:glide:${deps.glideVersionLib}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${deps.glideVersionLib}"
+
     //Spek
     testCompile 'org.jetbrains.spek:spek-api:1.1.0-beta3'
     testCompile 'org.jetbrains.spek:spek-junit-platform-engine:1.1.0-beta3'
