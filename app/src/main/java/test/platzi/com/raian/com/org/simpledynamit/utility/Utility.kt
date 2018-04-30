@@ -3,7 +3,18 @@ package test.platzi.com.raian.com.org.simpledynamit.utility
 import test.platzi.com.raian.com.org.simpledynamit.constants.GlobalConstants
 import test.platzi.com.raian.com.org.simpledynamit.model.country.Result
 
-class Utility{
+class Utility private constructor(){
+
+    //Singleton threadsafe instace of Utility class
+    companion object {
+        private val mUtility = Utility()
+
+        @Synchronized
+        fun getInstance():Utility{
+            return mUtility
+        }
+    }
+
     fun getArrayOfStringsFromResultOpenAQCountry(field: String, lstRes: List<Result>): ArrayList<String> {
         val arrayToReturn = arrayListOf(GlobalConstants.DEFAULT_OPTION_FOR_SELECT)
         when(field){
@@ -35,4 +46,19 @@ class Utility{
         }
         return arrayToReturn
     }
+
+    fun filterCitiesAccordingMeasures(filterInput: Int, lstRes : MutableList<test.platzi.com.raian.com.org.simpledynamit.model.city.Result>?):
+            List<test.platzi.com.raian.com.org.simpledynamit.model.city.Result>?{
+        lstRes?.let {
+            val lstIterator = lstRes.iterator()
+            while(lstIterator.hasNext()){
+                val count = lstIterator.next().count
+                if(count < filterInput){
+                    lstIterator.remove()
+                }
+            }
+        }
+        return lstRes
+    }
+
 }
