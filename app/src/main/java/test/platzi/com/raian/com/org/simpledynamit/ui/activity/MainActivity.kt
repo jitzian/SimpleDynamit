@@ -11,7 +11,7 @@ import test.platzi.com.raian.com.org.simpledynamit.authentication.IAuthenticator
 import test.platzi.com.raian.com.org.simpledynamit.authentication.IAuthenticatorImpl
 import test.platzi.com.raian.com.org.simpledynamit.constants.GlobalConstants
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private var TAG = MainActivity::class.java.simpleName
 
     private lateinit var mEditTextUsername: EditText
@@ -22,11 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        mEditTextUsername = findViewById(R.id.mEditTextUsername)
-        mEditTextPassword = findViewById(R.id.mEditTextPassword)
-        mButtonSignIn = findViewById(R.id.mButtonSignIn)
-
+        initializeView()
         customAuthenticator = IAuthenticatorImpl()
 
         mButtonSignIn.setOnClickListener({
@@ -46,5 +42,12 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
+    override fun initializeView() {
+        mEditTextUsername = findViewById(R.id.mEditTextUsername)
+        mEditTextPassword = findViewById(R.id.mEditTextPassword)
+        mButtonSignIn = findViewById(R.id.mButtonSignIn)
+    }
+
 
 }
