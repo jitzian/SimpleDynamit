@@ -32,7 +32,7 @@ class RVCustomAdapter (private var lstRes : List<Result>?, private val context: 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.mTextViewCityValue.text = lstRes?.get(position)?.city
-        holder.mTextViewCountryValue.text = lstRes?.get(position)?.city
+        holder.mTextViewCountryValue.text = lstRes?.get(position)?.country
         holder.mTextViewCountValue.text = lstRes?.get(position)?.count.toString()
         Picasso.with(context)
                 .load(GlobalConstants.URL_IMAGE_URL)
