@@ -6,6 +6,7 @@ import test.platzi.com.raian.com.org.simpledynamit.constants.GlobalConstants
 import java.util.concurrent.Executors
 
 class RetrofitProvider private constructor(){
+    //Singleton threadsafe instance of RetrofitProvides class
     companion object {
         private val retrofitProviderInstance = RetrofitProvider()
 
