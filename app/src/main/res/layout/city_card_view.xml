@@ -16,6 +16,7 @@
 
         <ImageView
             android:id="@+id/mImageViewCity"
+            android:transitionName="mImageViewHeaderCityDetailTransition"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginLeft="12dp"
@@ -35,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/mTextViewCityValue"
+            android:transitionName="mTextViewDetailCityTransition"
             android:layout_marginLeft="120dp"
             android:layout_marginStart="220dp"
             android:layout_marginTop="10dp"
@@ -53,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/mTextViewCountryValue"
+            android:transitionName="mTextViewDetailCountryTransition"
             android:layout_marginLeft="120dp"
             android:layout_marginStart="220dp"
             android:layout_marginTop="50dp"
@@ -71,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/mTextViewCountValue"
+            android:transitionName="mTextViewDetailCountTransition"
             android:layout_marginLeft="120dp"
             android:layout_marginStart="220dp"
             android:layout_marginTop="90dp"

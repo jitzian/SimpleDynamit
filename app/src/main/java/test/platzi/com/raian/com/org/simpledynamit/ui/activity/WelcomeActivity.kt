@@ -13,7 +13,7 @@ import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.activity_welcome.*
 import kotlinx.android.synthetic.main.app_bar_welcome.*
 import test.platzi.com.raian.com.org.simpledynamit.R
-import test.platzi.com.raian.com.org.simpledynamit.ui.fragments.InitialWelcomeFragment
+import test.platzi.com.raian.com.org.simpledynamit.ui.activity.fragments.InitialWelcomeFragment
 
 class WelcomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 

@@ -55,6 +55,7 @@ class RVCustomAdapter (private var lstRes : List<Result>?, private val context: 
                 mTextViewCountValue = it.findViewById(R.id.mTextViewCountValue)
                 it.setOnClickListener(View.OnClickListener {
                     Log.d(TAG, "You've clicked: City: ${it.mTextViewCityValue}")
+
                 })
             }
         }

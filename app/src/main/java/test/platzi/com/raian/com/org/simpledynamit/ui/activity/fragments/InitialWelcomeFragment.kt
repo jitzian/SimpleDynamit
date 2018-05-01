@@ -1,4 +1,4 @@
-package test.platzi.com.raian.com.org.simpledynamit.ui.fragments
+package test.platzi.com.raian.com.org.simpledynamit.ui.activity.fragments
 
 
 import android.os.Bundle
