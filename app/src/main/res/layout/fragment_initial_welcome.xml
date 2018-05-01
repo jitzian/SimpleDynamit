@@ -3,12 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.fragments.InitialWelcomeFragment"
+    tools:context=".ui.fragments.InitialWelcomeFragment"
     android:orientation="vertical">
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mSpinnerCities"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mRecyclerViewCities"/>
 
 </LinearLayout>

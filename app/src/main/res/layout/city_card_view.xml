@@ -29,7 +29,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginStart="150dp"
             android:layout_marginTop="10dp"
-            tools:text="City: " />
+            android:text="@string/cityName" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,13 +41,13 @@
             tools:text="--" />
 
         <TextView
+            android:id="@+id/mTextViewCountry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/mTextViewCountry"
             android:layout_marginLeft="120dp"
             android:layout_marginStart="150dp"
             android:layout_marginTop="50dp"
-            tools:text="Country: "/>
+            android:text="@string/countryName" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
             android:layout_marginLeft="120dp"
             android:layout_marginStart="150dp"
             android:layout_marginTop="90dp"
-            tools:text="Count: "/>
+            android:text="@string/countName"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,9 +75,7 @@
             android:layout_marginStart="220dp"
             android:layout_marginTop="90dp"
             tools:text="--"/>
-        
-        
-    </RelativeLayout>
 
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>
