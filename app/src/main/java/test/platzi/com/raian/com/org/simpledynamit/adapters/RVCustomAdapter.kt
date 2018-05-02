@@ -1,6 +1,10 @@
 package test.platzi.com.raian.com.org.simpledynamit.adapters
 
 import android.content.Context
+import android.support.transition.Fade
+import android.support.transition.TransitionInflater
+import android.support.transition.TransitionSet
+import android.support.v4.app.FragmentManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,8 +17,11 @@ import kotlinx.android.synthetic.main.city_card_view.view.*
 import test.platzi.com.raian.com.org.simpledynamit.R
 import test.platzi.com.raian.com.org.simpledynamit.constants.GlobalConstants
 import test.platzi.com.raian.com.org.simpledynamit.model.city.Result
+import test.platzi.com.raian.com.org.simpledynamit.ui.fragments.DetailCityFragment
+import test.platzi.com.raian.com.org.simpledynamit.ui.fragments.InitialWelcomeFragment
+import test.platzi.com.raian.com.org.simpledynamit.ui.transition.TransitionType
 
-class RVCustomAdapter (private var lstRes : List<Result>?, private val context: Context) :
+class RVCustomAdapter (private var lstRes: List<Result>?, private val context: Context, private var fragmentManager: FragmentManager?) :
         RecyclerView.Adapter<RVCustomAdapter.ViewHolder>() {
     private var TAG = RVCustomAdapter::class.java.simpleName
 
@@ -38,6 +45,8 @@ class RVCustomAdapter (private var lstRes : List<Result>?, private val context: 
                 .load(GlobalConstants.URL_IMAGE_URL)
                 .into(holder.mImageViewCity)
     }
+    val FADE_DEFAULT_TIME = 300
+    val MOVE_DEFAULT_TIME = 1000
 
     //ViewHolder
     inner class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
@@ -55,6 +64,37 @@ class RVCustomAdapter (private var lstRes : List<Result>?, private val context: 
                 mTextViewCountValue = it.findViewById(R.id.mTextViewCountValue)
                 it.setOnClickListener(View.OnClickListener {
                     Log.d(TAG, "You've clicked: City: ${it.mTextViewCityValue}")
+
+
+//                    var nextFragment = DetailCityFragment.newInstance("", "")
+//
+//                    // 1. Exit for Previous Fragment
+//                    var exitFade = Fade()
+//
+//                    exitFade.duration = FADE_DEFAULT_TIME.toLong()
+//
+//                    // 2. Shared Elements Transition
+//                    var enterTransitionSet = TransitionSet()
+//                    enterTransitionSet.addTransition(TransitionInflater.from(context).inflateTransition(android.R.transition.move))
+//                    enterTransitionSet.duration = MOVE_DEFAULT_TIME.toLong()
+//                    enterTransitionSet.startDelay = FADE_DEFAULT_TIME.toLong()
+//                    nextFragment.sharedElementEnterTransition = enterTransitionSet
+//
+//                    // 3. Enter Transition for New Fragment
+//                    var enterFade = Fade()
+//                    enterFade.startDelay = (MOVE_DEFAULT_TIME + FADE_DEFAULT_TIME).toLong()
+//                    enterFade.duration = FADE_DEFAULT_TIME.toLong()
+//                    nextFragment.setEnterTransition(enterFade)
+//
+////                    fragmentManager?.beginTransaction()?.replace(R.id.mFraLayoutWelcomeContainer, DetailCityFragment.newInstance("",""), DetailCityFragment::class.java.simpleName)?.commitNowAllowingStateLoss()
+//                    fragmentManager?.beginTransaction()?.replace(R.id.mFrameLayoutMainContent, DetailCityFragment.newInstance("",""), DetailCityFragment::class.java.simpleName)?.commit()
+//
+
+//                    fragmentManager?.beginTransaction()
+//                            .addToBackStack(InitialWelcomeFragment()::class.java.simpleName)
+//                            .setCustomAnimations(1,2,3,4,)
+//                            .replace()
+//                            .
 
                 })
             }

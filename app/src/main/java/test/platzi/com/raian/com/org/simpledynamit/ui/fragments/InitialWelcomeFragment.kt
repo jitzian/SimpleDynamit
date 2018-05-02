@@ -1,4 +1,4 @@
-package test.platzi.com.raian.com.org.simpledynamit.ui.activity.fragments
+package test.platzi.com.raian.com.org.simpledynamit.ui.fragments
 
 
 import android.os.Bundle
@@ -101,7 +101,7 @@ class InitialWelcomeFragment : Fragment() {
                     Log.e(TAG, "-->> ${Utility.getInstance().filterCitiesAccordingMeasures(GlobalConstants.MEASUREMENTS_FILTER, response?.body()?.results?.toMutableList())?.size}")
 
                     rvAdapter = context?.let {
-                        RVCustomAdapter(response?.body()?.results, it)
+                        RVCustomAdapter(response?.body()?.results, it, fragmentManager)
                     }!!
                     rvAdapter.let {
                         activity?.runOnUiThread {
