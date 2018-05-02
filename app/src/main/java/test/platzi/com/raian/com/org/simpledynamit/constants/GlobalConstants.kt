@@ -8,7 +8,6 @@ class GlobalConstants{
         const val BASE_URL_OPEN_AQ = "https://api.openaq.org"
         const val OPEN_AQ_CITIES_LIMIT = 2046
         const val MEASUREMENTS_FILTER = 10000
-        const val URL_IMAGE_URL = "http://www.luxus-india.com/wp-content/uploads/2015/12/stock-vector-flat-city-icon-209365492.png"
-        const val URL_DETAIL_CITY_IMAGE_URL = "https://png.pngtree.com/thumb_back/fw800/back_pic/04/05/58/63580d8cff51b5d.jpg"
+        const val URL_IMAGE_URL = "https://cdn.pixabay.com/photo/2012/05/07/18/01/buildings-48846_960_720.png"
     }
 }

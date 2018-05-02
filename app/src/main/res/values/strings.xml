@@ -17,5 +17,18 @@
     <string name="lorepIpsumText">Lorem ipsum dolor sit amet, ea petentium voluptaria eum, mea autem nulla eu, in unum elitr usu. Agam erroribus mel cu, eam aliquid imperdiet at. Ne eum laudem iracundia, per movet dicant praesent eu. Ei labores patrioque laboramus has. Cu lorem argumentum sed, qui insolens recteque at, adhuc quaeque duo ad. At duo errem alienum appareat, sed te nisl mazim.
 
         Duo ad enim saepe facete, et vel vero tota aperiri. Has augue delicata philosophia no, in nullam salutatus dissentias usu, solet option scripserit ad vim. Ad oporteat gloriatur elaboraret mei. Reque debitis ad pri. Eu pro zril tamquam evertitur, nec laudem numquam accumsan in, vis ei novum constituam.</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="README">Display a listing of the city names and number of measurements that are available for that city. Do
+not show any cities that have less than 10,000 measurements. The listing should be sorted
+descending by number of measurements. The app should use the most efficient way possible to
+filter and sort the data.</string>
+    <string name="aboutText">About...</string>
+    <string name="aboutLibrariesText">\nLiraries...</string>
+    <string name="librariesText">\n
+        * Retrofit \n
+        * Picasso \n
+        * Spek
+    </string>
+    <string name="launch_cities">Launch Cities</string>
 
 </resources>

@@ -39,6 +39,7 @@ class InitialWelcomeFragment : Fragment() {
     private lateinit var rvAdapter: RVCustomAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
 
+    private lateinit var lstResultsCities: List<test.platzi.com.raian.com.org.simpledynamit.model.city.Result>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -47,15 +48,15 @@ class InitialWelcomeFragment : Fragment() {
 
         initializeView()
         initRetrofit()
-        loadCountries()
         loadCities()
 
         // Set an on item selected listener for spinner object
         mSpinnerCities?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
                 // Display the selected item text on text view
-                Log.e(TAG, "onItemSelected:: $position, $id")
+                Log.e(TAG, "onItemSelected:: $position, $id, ${mSpinnerCities?.selectedItem?.toString()}")
                 //TODO: Implement logic to filter the RV whenever the option is selected
+                //filterCitiesPerCountry(mSpinnerCities?.selectedItem?.toString())
             }
             override fun onNothingSelected(parent: AdapterView<*>){
                 // Another interface callback
@@ -97,11 +98,13 @@ class InitialWelcomeFragment : Fragment() {
         Runnable {
             restService?.getAllCities()?.enqueue(object : Callback<ResultOpenAQCity>{
                 override fun onResponse(call: Call<ResultOpenAQCity>?, response: Response<ResultOpenAQCity>?) {
-                    Log.d(TAG, "getAllCities()::onResponse::${response?.body()?.results?.size}")
-                    Log.e(TAG, "-->> ${Utility.getInstance().filterCitiesAccordingMeasures(GlobalConstants.MEASUREMENTS_FILTER, response?.body()?.results?.toMutableList())?.size}")
+
+                    response?.body()?.results?.let {
+                        lstResultsCities = Utility.getInstance().filterCitiesAccordingMeasures(GlobalConstants.MEASUREMENTS_FILTER, response.body()?.results?.toMutableList())!!
+                    }
 
                     rvAdapter = context?.let {
-                        RVCustomAdapter(response?.body()?.results, it, fragmentManager)
+                        RVCustomAdapter(lstResultsCities, it)
                     }!!
                     rvAdapter.let {
                         activity?.runOnUiThread {
@@ -134,7 +137,16 @@ class InitialWelcomeFragment : Fragment() {
         }
     }
 
-
-
+    private fun filterCitiesPerCountry(selectedCountry: String?){
+        val filteredCitiesAccordingToCountry = mutableListOf<test.platzi.com.raian.com.org.simpledynamit.model.city.Result>()
+        lstResultsCities.let {
+            for(item in lstResultsCities){
+                if(item.country?.toLowerCase()?.contains(selectedCountry!!)!!){
+                    filteredCitiesAccordingToCountry.add(item)
+                }
+            }
+            rvAdapter.filterList(filteredCitiesAccordingToCountry as ArrayList<test.platzi.com.raian.com.org.simpledynamit.model.city.Result>)
+        }
+    }
 
 }

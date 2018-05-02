@@ -58,7 +58,7 @@ class Utility private constructor(){
                 }
             }
         }
-        return lstRes
+        return lstRes?.sortedWith(compareBy ({ it.count }))
     }
 
 }

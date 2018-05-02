@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/mCoordinatorLayoutDetailCity"
-            app:contentScrim="?attr/colorAccent"
+            app:contentScrim="@color/cardview_light_background"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView

@@ -17,35 +17,75 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <TextView
+        <RelativeLayout
+            android:id="@+id/cardViewContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/mTextViewDetailCountry"
-            android:textSize="24dp"
-            android:transitionName="mTextViewDetailCountryTransition"
-            tools:text="Country:"/>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/mTextViewDetailCity"
-            android:transitionName="mTextViewDetailCityTransition"
-            android:textSize="20dp"
-            tools:text="City:"/>
+            <TextView
+                android:id="@+id/mTextViewCountryDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_marginTop="10dp"
+                android:text="@string/countryName" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/mTextViewDetailCount"
-            android:transitionName="mTextViewDetailCountTransition"
-            android:textSize="20dp"
-            tools:text="Count:"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mTextViewDetailCountry"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="10dp"
+                android:textSize="24sp"
+                android:transitionName="mTextViewDetailCountryTransition"
+                tools:text="Country:"/>
+
+            <TextView
+                android:id="@+id/mTextViewCityDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_marginTop="50dp"
+                android:text="@string/cityName" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mTextViewDetailCity"
+                android:transitionName="mTextViewDetailCityTransition"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="50dp"
+                android:textSize="24sp"
+                tools:text="City:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mTextViewCount"
+                android:layout_marginTop="90dp"
+                android:textSize="24sp"
+                android:text="@string/countName"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/mTextViewDetailCount"
+                android:transitionName="mTextViewDetailCountTransition"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="90dp"
+                android:textSize="24sp"
+                tools:text="Count:"/>
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mTextViewDetailLoremIpsum"
-            android:textSize="19dp"
+            android:textSize="19sp"
             android:layout_marginTop="10dp"
             tools:text="@string/lorepIpsumText"
             android:text="@string/lorepIpsumText"/>

@@ -1,7 +1,6 @@
 package test.platzi.com.raian.com.org.simpledynamit.ui.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText

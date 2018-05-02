@@ -12,7 +12,7 @@
         android:id="@+id/welcomeMessageLayoutContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#881B21"
+        android:background="#BABABA"
         android:visibility="visible">
 
         <TextView
@@ -21,9 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="70dp"
-            android:text="Welcome..."
+            android:text="@string/aboutText"
             android:paddingLeft="7dp"
-            android:textColor="#ddd"
+            android:textColor="#383838"
             android:textSize="28sp"
             android:textStyle="bold"
             android:paddingStart="7dp" />
@@ -35,9 +35,33 @@
             android:layout_below="@+id/welcome_title"
             android:paddingLeft="7dp"
             android:paddingRight="7dp"
-            android:text="Blablabla..."
-            android:textColor="#ddd"
+            android:text="@string/README"
+            android:textColor="#FFFF"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/welcome_and_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aboutLibrariesText"
+            android:paddingLeft="7dp"
+            android:textColor="#383838"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:paddingStart="7dp"
+            android:layout_below="@+id/welcome_messgae"/>
+
+        <TextView
+            android:id="@+id/welcome_and_more_libs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcome_and_more"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:text="@string/librariesText"
+            android:textColor="#FFFF"
+            android:textSize="18sp" />
+
 
         <Button
             android:layout_width="wrap_content"
@@ -51,6 +75,9 @@
             android:text="Got It"
             android:textColor="#fff"
             android:id="@+id/mButtonDimissWelcome"/>
+
+
+
     </RelativeLayout>
 
     <FrameLayout
