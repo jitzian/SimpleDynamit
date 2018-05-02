@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 
 class Result {
 
+    constructor(city: String, country: String, locations: Int, count: Int)
+
     @SerializedName("city")
     @Expose
     var city: String? = null
