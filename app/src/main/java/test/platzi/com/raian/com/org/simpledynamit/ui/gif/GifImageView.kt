@@ -33,7 +33,6 @@ class GifImageView : View {
         }
     }
 
-
     private fun init() {
         isFocusable = true
         mMovie = Movie.decodeStream(mInputStream)
@@ -48,7 +47,6 @@ class GifImageView : View {
     }
 
     override fun onDraw(canvas: Canvas) {
-
         val now = SystemClock.uptimeMillis()
 
         if (mStart == 0L) {
@@ -56,7 +54,6 @@ class GifImageView : View {
         }
 
         if (mMovie != null) {
-
             var duration = mMovie!!.duration()
             if (duration == 0) {
                 duration = 1000
@@ -83,6 +80,5 @@ class GifImageView : View {
         } catch (e: FileNotFoundException) {
             Log.e("GIfImageView", "File not found")
         }
-
     }
 }
