@@ -25,7 +25,8 @@
         <activity
             android:name=".ui.transition.DetailActivity"
             android:label="@string/title_activity_detail"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:hardwareAccelerated="false"/>
     </application>
 
 </manifest>

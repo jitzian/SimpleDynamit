@@ -2,7 +2,6 @@ package test.platzi.com.raian.com.org.simpledynamit.ui.fragments
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -11,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.Spinner
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,9 +24,12 @@ import test.platzi.com.raian.com.org.simpledynamit.model.country.Result
 import test.platzi.com.raian.com.org.simpledynamit.model.country.ResultOpenAQCountry
 import test.platzi.com.raian.com.org.simpledynamit.providers.RetrofitProvider
 import test.platzi.com.raian.com.org.simpledynamit.rest.RestService
+import test.platzi.com.raian.com.org.simpledynamit.ui.gif.GifImageView
 import test.platzi.com.raian.com.org.simpledynamit.utility.Utility
 
-class InitialWelcomeFragment : Fragment() {
+
+class InitialWelcomeFragment : BaseFragment() {
+
     private val TAG =  InitialWelcomeFragment::class.java.simpleName
 
     private lateinit var rootView: View
@@ -39,6 +42,11 @@ class InitialWelcomeFragment : Fragment() {
     private lateinit var rvAdapter: RVCustomAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
 
+    private lateinit var mGifImageViewLookup: GifImageView
+    private lateinit var mGifImageView404Error: GifImageView
+    private lateinit var mRelativeLayoutOfflineContainer: LinearLayout
+
+
     private lateinit var lstResultsCities: List<test.platzi.com.raian.com.org.simpledynamit.model.city.Result>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +54,7 @@ class InitialWelcomeFragment : Fragment() {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_initial_welcome, container, false)
 
-        initializeView()
+        initializeFragmentViews()
         initRetrofit()
         loadCities()
 
@@ -65,15 +73,21 @@ class InitialWelcomeFragment : Fragment() {
         return rootView
     }
 
-    private fun initializeView(){
+    override fun initializeFragmentViews(){
         mSpinnerCities = rootView.findViewById(R.id.mSpinnerCities)
         mRecyclerViewCities = rootView.findViewById(R.id.mRecyclerViewCities)
+
+        mRelativeLayoutOfflineContainer = rootView.findViewById(R.id.mRelativeLayoutOfflineContainer)
+
+        mGifImageViewLookup = rootView.findViewById(R.id.mGifImageViewLookup)
+        mGifImageView404Error = rootView.findViewById(R.id.mGifImageView404Error)
 
         //RecyclerView Initialization
         mRecyclerViewCities.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(context)
         mRecyclerViewCities.layoutManager = layoutManager
     }
+
 
     private fun initRetrofit(){
         retrofit = RetrofitProvider.getInstance().providesRetrofit(GlobalConstants.BASE_URL_OPEN_AQ)
@@ -98,6 +112,9 @@ class InitialWelcomeFragment : Fragment() {
         Runnable {
             restService?.getAllCities()?.enqueue(object : Callback<ResultOpenAQCity>{
                 override fun onResponse(call: Call<ResultOpenAQCity>?, response: Response<ResultOpenAQCity>?) {
+                    activity?.runOnUiThread({
+                        mRelativeLayoutOfflineContainer.visibility = View.GONE
+                    })
 
                     response?.body()?.results?.let {
                         lstResultsCities = Utility.getInstance().filterCitiesAccordingMeasures(GlobalConstants.MEASUREMENTS_FILTER, response.body()?.results?.toMutableList())!!
@@ -115,7 +132,11 @@ class InitialWelcomeFragment : Fragment() {
 
                 override fun onFailure(call: Call<ResultOpenAQCity>?, t: Throwable?) {
                     Log.e(TAG, "getAllCities()::onFailure::${t?.message}")
-
+                    activity?.runOnUiThread({
+                        mGifImageViewLookup.setGifImageResource(R.drawable.error404)
+                        mGifImageView404Error.setGifImageResource(R.drawable.error_offline_sammy)
+                        mRelativeLayoutOfflineContainer.visibility = View.VISIBLE
+                    })
                 }
             })
         }.run()

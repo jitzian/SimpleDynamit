@@ -22,23 +22,34 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initializeView()
-        customAuthenticator = IAuthenticatorImpl()
+        customAuthenticator = IAuthenticatorImpl(this@MainActivity)
 
         mButtonSignIn.setOnClickListener({
-            if(!mEditTextUsername.text?.isEmpty()!! && !mEditTextPassword.text?.isEmpty()!!){
-                when(customAuthenticator.validateCredentials(mEditTextUsername.text?.toString(), mEditTextPassword.text?.toString())){
-                    true -> {
-                        Log.d(TAG, "Valid credentialas")
-                        customAuthenticator.executeAuthentication(this@MainActivity)
-                    }
-                    false -> {
-                        Log.e(TAG, "Invalid credentialas")
-                        Toast.makeText(this@MainActivity, GlobalConstants.ERROR_CREDENTIALS_INVALID, Toast.LENGTH_LONG).show()
-                    }
-                }
-            }else{
-                Toast.makeText(this@MainActivity, GlobalConstants.INPUT_CREDENTIALS_ERROR, Toast.LENGTH_LONG).show()
+
+            if(customAuthenticator.validateInputUserNameLength(mEditTextUsername.text.toString())
+                    && customAuthenticator.validateInputPasswordLength(mEditTextPassword.text.toString())){
+                customAuthenticator.validateCredentialsOnRemoteAPI(mEditTextUsername.text?.toString(), mEditTextPassword.text?.toString())
             }
+
+//            if(!mEditTextUsername.text?.isEmpty()!! && !mEditTextPassword.text?.isEmpty()!!){
+//                when(customAuthenticator.validateInputUserNameLength(mEditTextUsername.text.toString())
+//                        && customAuthenticator.validateInputPasswordLength(mEditTextPassword.text.toString())){
+//
+////                }
+////                when(customAuthenticator.validateCredentials(mEditTextUsername.text?.toString(), mEditTextPassword.text?.toString())){
+//                    true -> {
+//                        customAuthenticator.validateCredentialsOnRemoteAPI(mEditTextUsername.text?.toString(), mEditTextPassword.text?.toString())
+//                        Log.d(TAG, "Valid credentialas")
+////                        customAuthenticator.redirectToAuthenticatedActivity(this@MainActivity)
+//                    }
+//                    false -> {
+//                        Log.e(TAG, "Invalid credentialas")
+//                        Toast.makeText(this@MainActivity, GlobalConstants.ERROR_CREDENTIALS_INVALID, Toast.LENGTH_LONG).show()
+//                    }
+//                }
+//            }else{
+//                Toast.makeText(this@MainActivity, GlobalConstants.INPUT_CREDENTIALS_ERROR, Toast.LENGTH_LONG).show()
+//            }
         })
     }
 

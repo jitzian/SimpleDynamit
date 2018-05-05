@@ -1,10 +1,9 @@
-package test.platzi.com.raian.com.org.simpleplatzi.model
+package test.platzi.com.raian.com.org.simpledynamit.model.authorization
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class ResultAuthorization {
-
     @SerializedName("statusCode")
     @Expose
     var statusCode: String? = null
@@ -17,5 +16,4 @@ class ResultAuthorization {
     @SerializedName("attributes")
     @Expose
     var attributes: Attributes? = null
-
 }

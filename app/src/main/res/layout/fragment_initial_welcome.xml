@@ -3,23 +3,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.InitialWelcomeFragment"
-    android:orientation="vertical">
+    android:gravity="top"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.InitialWelcomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/mRelativeLayoutOfflineContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <test.platzi.com.raian.com.org.simpledynamit.ui.gif.GifImageView
+                android:id="@+id/mGifImageViewLookup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical|center_horizontal"
+                android:visibility="visible" />
+
+            <test.platzi.com.raian.com.org.simpledynamit.ui.gif.GifImageView
+                android:id="@+id/mGifImageView404Error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical|center_horizontal"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/welcome_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/while_404"
+                android:textColor="#383838"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:text="@string/something_interesting"
+                android:textColor="#27282b"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <FrameLayout
+        android:id="@+id/mFraLayoutWelcomeContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/mFraLayoutWelcomeContainer"/>
+        android:layout_height="wrap_content" />
 
     <Spinner
+        android:id="@+id/mSpinnerCities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/mSpinnerCities"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/mRecyclerViewCities"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/mRecyclerViewCities"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
