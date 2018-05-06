@@ -117,7 +117,9 @@ class InitialWelcomeFragment : BaseFragment() {
                     })
 
                     response?.body()?.results?.let {
-                        lstResultsCities = Utility.getInstance().filterCitiesAccordingMeasures(GlobalConstants.MEASUREMENTS_FILTER, response.body()?.results?.toMutableList())!!
+                        Utility.getInstance().let {
+                            lstResultsCities = Utility.getInstance().filterCitiesAccordingMeasures(GlobalConstants.MEASUREMENTS_FILTER, response.body()?.results?.toMutableList())!!
+                        }
                     }
 
                     rvAdapter = context?.let {

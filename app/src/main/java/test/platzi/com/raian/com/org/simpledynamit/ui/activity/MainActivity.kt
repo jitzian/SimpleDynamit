@@ -31,25 +31,22 @@ class MainActivity : BaseActivity() {
                 customAuthenticator.validateCredentialsOnRemoteAPI(mEditTextUsername.text?.toString(), mEditTextPassword.text?.toString())
             }
 
-//            if(!mEditTextUsername.text?.isEmpty()!! && !mEditTextPassword.text?.isEmpty()!!){
-//                when(customAuthenticator.validateInputUserNameLength(mEditTextUsername.text.toString())
-//                        && customAuthenticator.validateInputPasswordLength(mEditTextPassword.text.toString())){
-//
-////                }
-////                when(customAuthenticator.validateCredentials(mEditTextUsername.text?.toString(), mEditTextPassword.text?.toString())){
-//                    true -> {
-//                        customAuthenticator.validateCredentialsOnRemoteAPI(mEditTextUsername.text?.toString(), mEditTextPassword.text?.toString())
-//                        Log.d(TAG, "Valid credentialas")
-////                        customAuthenticator.redirectToAuthenticatedActivity(this@MainActivity)
-//                    }
-//                    false -> {
-//                        Log.e(TAG, "Invalid credentialas")
-//                        Toast.makeText(this@MainActivity, GlobalConstants.ERROR_CREDENTIALS_INVALID, Toast.LENGTH_LONG).show()
-//                    }
-//                }
-//            }else{
-//                Toast.makeText(this@MainActivity, GlobalConstants.INPUT_CREDENTIALS_ERROR, Toast.LENGTH_LONG).show()
-//            }
+            if(!mEditTextUsername.text?.isEmpty()!! && !mEditTextPassword.text?.isEmpty()!!){
+                when(customAuthenticator.validateInputUserNameLength(mEditTextUsername.text.toString())
+                        && customAuthenticator.validateInputPasswordLength(mEditTextPassword.text.toString())){
+
+                    true -> {
+                        customAuthenticator.validateCredentialsOnRemoteAPI(mEditTextUsername.text?.toString(), mEditTextPassword.text?.toString())
+                        Log.d(TAG, "Valid credentialas")
+                    }
+                    false -> {
+                        Log.e(TAG, "Invalid credentialas")
+                        Toast.makeText(this@MainActivity, GlobalConstants.ERROR_CREDENTIALS_INVALID, Toast.LENGTH_LONG).show()
+                    }
+                }
+            }else{
+                Toast.makeText(this@MainActivity, GlobalConstants.INPUT_CREDENTIALS_ERROR, Toast.LENGTH_LONG).show()
+            }
         })
     }
 

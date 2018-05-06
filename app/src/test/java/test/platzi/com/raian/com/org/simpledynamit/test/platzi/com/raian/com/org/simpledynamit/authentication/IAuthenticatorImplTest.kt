@@ -1,5 +1,6 @@
 package test.platzi.com.raian.com.org.simpledynamit.test.platzi.com.raian.com.org.simpledynamit.authentication
 
+import android.test.mock.MockContext
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
@@ -8,7 +9,7 @@ import org.junit.Assert.assertFalse
 import test.platzi.com.raian.com.org.simpledynamit.authentication.IAuthenticatorImpl
 
 class IAuthenticatorImplTest:Spek({
-    val customAuthenticator = IAuthenticatorImpl()
+    val customAuthenticator by memoized { IAuthenticatorImpl(MockContext()) }
 
     given("User input parameter = user and password input parameter = password"){
         val uss = "user"

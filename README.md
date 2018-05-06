@@ -16,10 +16,47 @@ Clone project from: https://github.com/jitzian/SimpleIAmBored.git
 
 ### Prerequisites
 
-Git previously installed
+Git previously installed.
+
+Install nodeJS: Follow this link http://blog.teamtreehouse.com/install-node-js-npm-mac
+Create file as server.js and save it with this code
 
 
-### Installing
+var unirest = require('unirest');
+var http = require('http')
+var auth = require('basic-auth')
+var request = require('request')
+
+// Create server
+var server = http.createServer(function (req, res) {
+  var credentials = auth(req)
+
+  if (!credentials || credentials.name !== 'user' || credentials.pass !== 'password') {
+    res.statusCode = 401
+    res.error = 'Unauthorized'
+    res.message = "Bad username or password"
+    console.log(res)
+    res.end('{"statusCode": "401", "error": "Unauthorized", "message": "Bad user name or password", "attributes": { "error": "Bad username or password"}}')
+  } else {
+    // console.log(res)    // res.end('Access granted')
+    res.end('{"statusCode": "200"}')
+
+  }
+})
+
+server.listen(3000)
+--
+### Screenshots
+![alt text](/screenshots/loginScreen.png "Login screen")
+![alt text](/screenshots/welcomeScreen.png "Welcome screen")
+![alt text](/screenshots/navigationScreen.png "Navigation screen")
+![alt text](/screenshots/mainScreen.png "Main screen")
+![alt text](/screenshots/detailScreen.png "Detail screen")
+![alt text](/screenshots/offlineScreen.png "Offline screen")
+
+### Running
+
+Run nodeJS server (npm start)
 
 After cloning and launching the app, introduce the following credentials
 uss: user

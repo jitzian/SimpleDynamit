@@ -34,6 +34,7 @@ task clean(type: Delete) {
 
 ext.deps = [
         'androidSupportVersionLib'  :   '27.1.1',
+        'androidConstraintLayoutLib':   '1.1.0',
         'retrofitVersionLib'        :   '2.3.0',
         'gsonVersionLib'            :   '2.3.0',
         'picassoVersionLib'         :   '2.5.2',

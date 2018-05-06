@@ -10,10 +10,11 @@ import test.platzi.com.raian.com.org.simpledynamit.model.city.Result
 import test.platzi.com.raian.com.org.simpledynamit.utility.Utility
 
 class UtilityTest:Spek({
+    val mUtility by memoized { Utility }
 
     given("Utility class is a Singleton"){
         it("Whenever getting the instance it should not be null"){
-            Assert.assertNotNull(Utility.getInstance())
+            Assert.assertNotNull(mUtility)
         }
     }
 
@@ -24,7 +25,7 @@ class UtilityTest:Spek({
                 Result("unused", "AD", 1, 5320)
         )
         it("Will return only those cities with less thatn 10,000 measurements"){
-            Assert.assertEquals(0, (Utility.getInstance().filterCitiesAccordingMeasures(GlobalConstants.MEASUREMENTS_FILTER, lstRes))?.size)
+            Assert.assertEquals(0, (mUtility.getInstance().filterCitiesAccordingMeasures(GlobalConstants.MEASUREMENTS_FILTER, lstRes))?.size)
         }
     }
 
@@ -40,7 +41,7 @@ class UtilityTest:Spek({
 
         it("Create a List of Strings by Country -name- to Populate SPinner on Welcome Fragment"){
             val filterType = "name"
-            val arrayToReturn = Utility.getInstance().getArrayOfStringsFromResultOpenAQCountry(filterType,listOfCountries)
+            val arrayToReturn = mUtility.getInstance().getArrayOfStringsFromResultOpenAQCountry(filterType,listOfCountries)
             val firstCountry = "United States"
             val secondCountry = "Chile"
             val thirdCountry = "France"

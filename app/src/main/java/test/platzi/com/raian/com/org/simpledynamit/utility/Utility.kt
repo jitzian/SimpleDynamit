@@ -1,5 +1,7 @@
 package test.platzi.com.raian.com.org.simpledynamit.utility
 
+import android.app.Activity
+import android.widget.Toast
 import test.platzi.com.raian.com.org.simpledynamit.constants.GlobalConstants
 import test.platzi.com.raian.com.org.simpledynamit.model.country.Result
 
@@ -61,4 +63,12 @@ class Utility private constructor(){
         return lstRes?.sortedWith(compareBy ({ it.count }))
     }
 
+    fun toast(activity: Activity, message: String){
+        toast(activity, message, Toast.LENGTH_LONG)
+    }
+
+    fun toast(activity: Activity, message: String, duration: Int){
+        var toast = Toast.makeText(activity, message, duration)
+        toast.show()
+    }
 }

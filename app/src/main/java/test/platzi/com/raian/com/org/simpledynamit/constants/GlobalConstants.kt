@@ -14,7 +14,11 @@ class GlobalConstants{
         const val URL_IMAGE_URL = "https://cdn.pixabay.com/photo/2012/05/07/18/01/buildings-48846_960_720.png"
 
         //Response codes
-        const val STATUS_CODE_200 = "200"
+        const val STATUS_CODE_200 = 200
+        const val STATUS_CODE_401 = 401
+
+        //ERROR DESCRIPTIONS
+        const val ERROR_ENTERED_CREDENTIALS_NOT_VALID = "CREDENTIALS NOT VALID"
 
     }
 }
